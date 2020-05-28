@@ -19,9 +19,8 @@ async def handler(update):
             print('------------------------------------------------------')
 
 # Use the client in a `with` block. It calls `start/disconnect` automatically.
-client = TelegramClient(username, api_id, api_hash)
-client.start()
-client.add_event_handler(handler)
+with TelegramClient(username, api_id, api_hash) as client:
+    client.add_event_handler(handler)
 
-print('(Press Ctrl+C to stop this)')
-client.run_until_disconnected()
+    print('(Press Ctrl+C to stop this)')
+    client.run_until_disconnected()
